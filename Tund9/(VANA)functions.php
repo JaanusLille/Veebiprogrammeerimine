@@ -1,4 +1,4 @@
-﻿<?php
+<?php
   //laen andmebaasi info
   require("../../../config.php");
   //echo $GLOBALS["serverUsername"];
@@ -12,8 +12,19 @@
   function readallvalidatedmessagesbyuser(){
 	$msghtml = "";
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	$stmt = $mysqli->prepare("SELECT id, firstname, lastname FROM vpusers");
+	$stmt = $mysqli->prepare("INSERT INTO vpphotos1 (userid, filename, alt, privacy) VALUES (?, ?, ?, ?, ?)");
 	echo $mysqli->error;
+	if(empty($privacy)){
+		$privacy = 3;
+	}
+	$stmt->bind_param("issi", $_SESSION["userid"], $fileName, $altText, $privacy);
+	if($stmt->execute()){
+		echo "Andmebaasiga on ka korras!";
+	}	else {
+		echo
+	$stmt->close();
+	$mysqli->close();
+	
 	$stmt->bind_result($idFromDb, $firstnameFromDb, $lastnameFromDb);
 	
 	$stmt2 = $mysqli->prepare("SELECT message, accepted FROM vpamsg WHERE acceptedby=?");
@@ -224,18 +235,18 @@
   }
   
   function listallmessages(){
-	$msgHTML = "";
+		$msgHTML = "";
     $mysqli = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
     $stmt = $mysqli->prepare("SELECT message FROM vpamsg");
-	echo $mysqli->error;
-	$stmt->bind_result($msg);
-	$stmt->execute();
-	while($stmt->fetch()){
-		$msgHTML .= "<p>" .$msg ."</p> \n";
-	}
-	$stmt->close();
-	$mysqli->close();
-	return $msgHTML;
+		echo $mysqli->error;
+		$stmt->bind_result($msg);
+		$stmt->execute();
+		while($stmt->fetch()){
+			$msgHTML .= "<p>" .$msg ."</p> \n";
+		}
+		$stmt->close();
+		$mysqli->close();
+		return $msgHTML;
   }
   
   //tekstsisestuse kontroll

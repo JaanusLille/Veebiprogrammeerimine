@@ -1,6 +1,6 @@
 ﻿<?php
   //kutsume välja funktsioonide faili
-  require("functions.php");
+  require("../Tund4/functions.php");
   
   $firstName = "Kodanik";
   $lastName = "Tundmatu";
@@ -15,13 +15,7 @@
   if (isset($_POST["lastName"])){
 	  $lastName = test_input($_POST["lastName"]);
   }
-  
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
+
   
   //täiesti mõttetu, harjutamiseks mõeldud funktsioon
   function fullname(){
@@ -62,6 +56,7 @@
 	<input type="text" name="lastName">
 	<label>Sünniaasta:</label>
 	<input type="number" min="1914" max="2000" value="1999" name="birthYear">
+	<br>
 	<br>
 	<input type="submit" name="submitUserData" value="Saada andmed">
   </form>

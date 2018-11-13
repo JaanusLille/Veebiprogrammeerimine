@@ -44,7 +44,7 @@
   ?>
   <!--<img src="http://greeny.cs.tlu.ee/~rinde/veebiprogrammeerimine2018s/tlu_terra_600x400_1.jpg" alt="TLÜ Terra õppehoone">-->
   
-  <img src="../tlu_terra_600x400_1.jpg" alt="TLÜ Terra õppehoone">
+  <img src="../../~rinde/veebiprogrammeerimine2018s/tlu_terra_600x400_1.jpg" alt="TLÜ Terra õppehoone">
   <p>Mul on ka sõber, kes teeb oma <a href="../../~marvhel">veebi</a>.</p>
   
 </body>
